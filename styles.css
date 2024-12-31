@@ -158,29 +158,66 @@ body {
 }
 
 @media (max-width: 600px) {
+  body {
+    padding: 5px;
+  }
+
   .keyboard {
     padding: 5px;
-    transform: scale(0.9);
+    transform: scale(1);
+    width: 98vw;
+    justify-content: center;
+    margin: 5px auto;
   }
 
   .key {
-    width: 35px;
-    height: 120px;
-    font-size: 14px;
+    width: calc(98vw / 8 - 2px);
+    height: 160px;
+    font-size: 18px;
+    margin: 0 1px;
+    padding-bottom: 15px;
+    border-radius: 0 0 5px 5px;
   }
   
   .key.black {
-    width: 20px;
-    height: 70px;
-    margin-left: -10px;
+    width: calc((98vw / 8) * 0.7);
+    height: 90px;
+    margin-left: calc((98vw / 8) * -0.35);
+    font-size: 14px;
+    border-radius: 0 0 3px 3px;
+  }
+
+  .melody-selector {
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 5px;
+    margin: 10px 0;
+    width: 98vw;
+    padding: 0 10px;
+    box-sizing: border-box;
+  }
+
+  .melody-selector button {
+    width: 100%;
+    margin: 0;
+    padding: 15px;
+    font-size: 1.1rem;
+    border-radius: 8px;
   }
   
+  .instructions {
+    margin-bottom: 10px;
+  }
+
   .instructions h1 {
     font-size: 1.8rem;
+    margin-bottom: 5px;
   }
   
   .instructions p {
-    font-size: 0.9rem;
+    font-size: 1rem;
+    margin: 5px 0;
   }
 }
 
