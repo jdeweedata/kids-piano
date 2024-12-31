@@ -1,0 +1,180 @@
+:root {
+  --white-key: #ffffff;
+  --white-key-active: #ffd700;
+  --black-key: #333333;
+  --black-key-active: #ff8c00;
+  --key-shadow: rgba(0, 0, 0, 0.2);
+  --star-color: #ffeb3b;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 100%);
+  font-family: 'Comic Sans MS', cursive, sans-serif;
+}
+
+.keyboard {
+  display: flex;
+  position: relative;
+  padding: 10px;
+  background-color: rgba(255, 255, 255, 0.8);
+  border-radius: 15px;
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+.key {
+  width: 50px;
+  height: 200px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+  padding-bottom: 10px;
+  font-size: 18px;
+  color: #333;
+  cursor: pointer;
+  transition: all 0.1s ease;
+  background-color: var(--white-key);
+  box-shadow: 2px 2px 5px var(--key-shadow);
+  position: relative;
+  overflow: hidden;
+}
+
+.key.active {
+  background-color: var(--white-key-active);
+  transform: scale(0.98);
+  box-shadow: 1px 1px 3px var(--key-shadow);
+  animation: keyPress 0.2s ease;
+}
+
+.key.black {
+  position: absolute;
+  width: 30px;
+  height: 120px;
+  background-color: var(--black-key);
+  color: white;
+  z-index: 1;
+  margin-left: -15px;
+}
+
+.key.black.active {
+  background-color: var(--black-key-active);
+}
+
+@keyframes keyPress {
+  0% { transform: scale(1); }
+  50% { transform: scale(0.95); }
+  100% { transform: scale(0.98); }
+}
+
+@keyframes star {
+  0% {
+    transform: scale(0);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1.5);
+    opacity: 0;
+  }
+}
+
+@keyframes bounceNote {
+  0% { transform: translateY(0) scale(1); }
+  50% { transform: translateY(-20px) scale(1.2); }
+  100% { transform: translateY(0) scale(1); }
+}
+
+.star {
+  position: absolute;
+  width: 10px;
+  height: 10px;
+  background: var(--star-color);
+  clip-path: polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%);
+  animation: star 0.5s ease-out;
+  pointer-events: none;
+}
+
+.note-icon {
+  position: absolute;
+  font-size: 24px;
+  animation: bounceNote 0.5s ease;
+  pointer-events: none;
+  color: #ff69b4;
+}
+
+@media (max-width: 600px) {
+  .note-icon {
+    font-size: 18px;
+  }
+}
+
+.instructions {
+  text-align: center;
+  margin-bottom: 20px;
+}
+
+.instructions h1 {
+  font-size: 2.5rem;
+  color: #333;
+  margin: 0;
+}
+
+.instructions p {
+  font-size: 1.2rem;
+  color: #555;
+  margin: 10px 0 0;
+}
+
+.melody-selector {
+  margin-top: 20px;
+}
+
+.melody-selector button {
+  background-color: #ff69b4;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  margin: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.2s;
+}
+
+.melody-selector button:hover {
+  background-color: #ff1493;
+}
+
+.key.highlighted {
+  background-color: #7fffd4;
+  box-shadow: 0 0 10px #00ff7f;
+}
+
+@media (max-width: 600px) {
+  .key {
+    width: 40px;
+    height: 150px;
+    font-size: 16px;
+  }
+  
+  .key.black {
+    width: 25px;
+    height: 90px;
+    margin-left: -12.5px;
+  }
+  
+  .instructions h1 {
+    font-size: 2rem;
+  }
+  
+  .instructions p {
+    font-size: 1rem;
+  }
+}
