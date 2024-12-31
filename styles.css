@@ -186,41 +186,49 @@ body {
 
 @media (max-width: 600px) and (orientation: landscape) {
   body {
-    padding: 10px;
+    padding: 5px;
+    justify-content: flex-start;
   }
 
   .keyboard {
-    transform: scale(0.8);
-    padding: 2px;
+    transform: scale(1);
+    padding: 5px;
+    margin-top: 10px;
   }
 
   .key {
-    width: 30px;
-    height: 100px;
-    font-size: 12px;
+    width: 40px;
+    height: 120px;
+    font-size: 14px;
   }
   
   .key.black {
-    width: 18px;
-    height: 60px;
-    margin-left: -9px;
+    width: 24px;
+    height: 80px;
+    margin-left: -12px;
   }
 
   .instructions {
-    margin-bottom: 10px;
+    margin-bottom: 5px;
   }
 
   .instructions h1 {
-    font-size: 1.5rem;
+    font-size: 1.8rem;
+    margin: 5px 0;
   }
 
   .instructions p {
-    font-size: 0.8rem;
+    font-size: 0.9rem;
+    margin: 5px 0;
+  }
+
+  .melody-selector {
+    margin-top: 10px;
   }
 
   .melody-selector button {
-    padding: 8px 15px;
-    font-size: 0.8rem;
-    margin: 3px;
+    padding: 8px 16px;
+    font-size: 0.9rem;
+    margin: 4px;
   }
 }
