@@ -46,6 +46,34 @@ body {
   box-shadow: 2px 2px 5px var(--key-shadow);
   position: relative;
   overflow: hidden;
+  touch-action: manipulation;
+}
+
+.key:active {
+  transform: scale(0.95);
+}
+
+.key.active {
+  background-color: var(--white-key-active);
+  transform: scale(0.98);
+  box-shadow: 1px 1px 3px var(--key-shadow);
+  animation: keyPress 0.2s ease;
+}
+
+.key.active::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle, rgba(255,255,255,0.3) 10%, transparent 70%);
+  animation: ripple 0.3s ease-out;
+}
+
+@keyframes ripple {
+  0% { transform: scale(0); opacity: 1; }
+  100% { transform: scale(2); opacity: 0; }
 }
 
 .key.active {
@@ -196,6 +224,24 @@ body {
   border-radius: 25px;
   font-size: 1.2rem;
   z-index: 1000;
+}
+
+.confetti {
+  position: absolute;
+  font-size: 24px;
+  animation: confettiFall 1s ease-out;
+  z-index: 1001;
+}
+
+@keyframes confettiFall {
+  0% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
 }
 
 @media (max-width: 600px) {

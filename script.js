@@ -117,6 +117,18 @@ class SynthKeyboard {
       noteIcon.style.top = `${Math.random() * rect.height}px`;
       key.appendChild(noteIcon);
       
+      // Create confetti effect for correct notes in tutorial
+      if (tutorialActive) {
+        const confetti = document.createElement('div');
+        confetti.classList.add('confetti');
+        confetti.textContent = '🎉';
+        confetti.style.position = 'absolute';
+        confetti.style.left = `${rect.left + rect.width/2}px`;
+        confetti.style.top = `${rect.top}px`;
+        document.body.appendChild(confetti);
+        setTimeout(() => confetti.remove(), 1000);
+      }
+      
       // Remove animations after they complete
       star.addEventListener('animationend', () => star.remove());
       noteIcon.addEventListener('animationend', () => noteIcon.remove());
