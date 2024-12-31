@@ -179,6 +179,78 @@ function playMelody(melodyName) {
   });
 }
 
+// Tutorial sequence
+const tutorialSteps = [
+  {note: 'C4', instruction: 'Let\'s start with C'},
+  {note: 'D4', instruction: 'Now play D'},
+  {note: 'E4', instruction: 'Next is E'},
+  {note: 'F4', instruction: 'Try F now'},
+  {note: 'G4', instruction: 'Now play G'},
+  {note: 'A4', instruction: 'Next is A'},
+  {note: 'B4', instruction: 'Try B now'},
+  {note: 'C5', instruction: 'Finish with high C'}
+];
+
+let currentStep = 0;
+let tutorialActive = false;
+let instructionElement;
+
+function startTutorial() {
+  tutorialActive = true;
+  currentStep = 0;
+  
+  // Create instruction element if it doesn't exist
+  if (!instructionElement) {
+    instructionElement = document.createElement('div');
+    instructionElement.classList.add('tutorial-instruction');
+    document.body.appendChild(instructionElement);
+  }
+  
+  // Start the first step
+  nextTutorialStep();
+}
+
+function nextTutorialStep() {
+  if (!tutorialActive) return;
+  
+  // Clear previous highlights
+  document.querySelectorAll('.key').forEach(key => {
+    key.classList.remove('tutorial-highlight');
+  });
+  
+  if (currentStep >= tutorialSteps.length) {
+    // Tutorial complete
+    instructionElement.textContent = 'Great job! You completed the tutorial!';
+    setTimeout(() => {
+      instructionElement.remove();
+      tutorialActive = false;
+    }, 3000);
+    return;
+  }
+  
+  const step = tutorialSteps[currentStep];
+  const key = document.querySelector(`.key[data-note="${step.note}"]`);
+  
+  if (key) {
+    // Highlight the key
+    key.classList.add('tutorial-highlight');
+    
+    // Show instruction
+    instructionElement.textContent = step.instruction;
+    
+    // Listen for the correct note to be played
+    const handleNote = () => {
+      key.removeEventListener('mousedown', handleNote);
+      key.removeEventListener('touchstart', handleNote);
+      currentStep++;
+      setTimeout(nextTutorialStep, 500);
+    };
+    
+    key.addEventListener('mousedown', handleNote);
+    key.addEventListener('touchstart', handleNote);
+  }
+}
+
 // Initialize the keyboard when the DOM is loaded
 document.addEventListener('DOMContentLoaded', () => {
   new SynthKeyboard();
