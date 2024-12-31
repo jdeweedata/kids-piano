@@ -43,6 +43,26 @@ const melodies = {
     {note: 'C4', duration: 1000},
     {note: 'G4', duration: 1000},
     {note: 'F4', duration: 2000}
+  ],
+  billie: [
+    {note: 'C4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'F4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'E4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'C4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'F4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'E4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'C4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'F4', duration: 500},
+    {note: 'D4', duration: 500},
+    {note: 'E4', duration: 500},
+    {note: 'D4', duration: 500}
   ]
 };
 
