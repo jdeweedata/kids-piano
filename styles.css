@@ -144,6 +144,8 @@ body {
   font-weight: 400;
   max-width: 600px;
   line-height: 1.5;
+  text-align: center;
+  width: 100%;
 }
 
 .melody-selector {
